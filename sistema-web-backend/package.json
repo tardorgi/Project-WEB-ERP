@@ -1,0 +1,31 @@
+{
+  "name": "sistema-web-backend",
+  "version": "1.0.0",
+  "description": "Backend do sistema LTS",
+  "main": "server.js",              
+  "bin": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "ini": "^5.0.0",
+    "node-firebird": "^1.1.9"
+  },
+  "pkg": {
+    "assets": [
+      "../sistema-web-frontend/build/**/*",
+      "../LTS.INI",                         
+      "config/**/*",                         
+      "routes/**/*",                        
+      "data/favoritos.json"                  
+    ],
+    "targets": [
+      "node18-win-x64"
+    ]
+  }
+}

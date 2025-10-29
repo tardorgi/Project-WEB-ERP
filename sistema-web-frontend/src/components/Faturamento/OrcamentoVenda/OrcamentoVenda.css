@@ -1,0 +1,370 @@
+/* --- Estrutura da Tabela --- */
+.tabela-container {
+  flex: 1 1 0;
+  overflow-y: auto;
+  max-height: 50vh; /* no máximo metade da tela */
+  min-height: 0;
+  background: #fff;
+  position: relative;
+}
+
+.tabela-empresa {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 0.98rem;
+}
+
+.tabela-empresa th,
+.tabela-empresa td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.tabela-empresa thead th {
+  position: sticky;
+  top: 0;
+  background: #f7f7f7;
+  z-index: 5;
+  border-bottom: 2px solid #e0e0e0; /* Opcional para borda visual */
+}
+
+.tabela-empresa tbody tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.tabela-empresa .selecionado {
+  background: #e6f0fa;
+}
+
+/* --- Cabeçalho superior --- */
+.cabecalho {
+  flex: 0 0 auto;
+  padding: 12px 16px 8px 16px;
+  border-bottom: 1px solid #eee;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #e0e0e0;
+  background: #f7f7f7;
+  padding: 10px 18px 10px 14px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  gap: 12px;
+}
+
+.empresa-header {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #222;
+  flex: 1;
+}
+
+.acoes-topo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* --- Botões principais --- */
+.btn-criar {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-criar:hover {
+  background-color: #3e8e41;
+}
+
+.btn-icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* Botões de ação */
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-excluir {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-excluir:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-excluir:hover:enabled {
+  background-color: #c0392b;
+}
+
+.caixa-icone {
+  padding: 6px;
+  background: #e8e8e8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.caixa-icone:hover {
+  background: #d4d4d4;
+}
+
+/* --- Janela flutuante moderna --- */
+.floating-editor.moderno {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  padding: 56px 24px 24px; /* espaço para a barra de arrasto */
+  width: 520px;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Barra de arrasto --- */
+.editor-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background-color: #f9f9f9;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #333;
+  cursor: grab;
+}
+
+.drag-icon {
+  font-size: 18px;
+  color: #999;
+}
+
+.editor-title {
+  font-weight: bold;
+}
+
+/* --- Formulário --- */
+.form-blocos {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-linha.full,
+.form-linha.dupla {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-linha.dupla {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.form-linha.dupla > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 120, 255, 0.3);
+  border-color: #80bdff;
+}
+
+/* --- Botões de ação no formulário --- */
+.modal-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.modal-botoes .botao-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-botoes .botao-icon:hover {
+  transform: scale(1.15);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+  .tabela-container {
+    overflow-x: auto;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+
+  .tabela-empresa {
+    width: 100%;
+    min-width: 600px;
+  }
+
+  .floating-editor.moderno {
+    width: 90%;
+    left: 5%;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .empresa-header {
+    font-size: 1.2rem;
+  }
+
+  .btn-criar {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .tabela-empresa th,
+  .tabela-empresa td {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+  }
+
+  .modal-botoes .botao-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* --- Menu de Ordenar e Filtrar --- */
+.menu-ordenar-filtrar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 10;
+  padding: 8px 12px;
+  min-width: 120px;
+}
+
+.menu-ordenar-filtrar button {
+  margin: 2px 0;
+  width: 100%;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.menu-ordenar-filtrar input {
+  margin: 4px 0;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.listas-duplas {
+  display: flex;
+  flex-direction: column; /* horizontal */
+  gap: 0;
+  height: calc(100vh - 350px); /* ajuste 120px conforme altura do seu cabeçalho+barra superior */
+
+}
+
+.lista-orcamentos, .lista-itens {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.coluna-operacoes {
+  font-size: 0.85em;
+  color: #1976d2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+  font-weight: 500;
+}
+.coluna-operacoes span {
+  white-space: nowrap;
+}
+.sugestoes {
+  max-height: 120px;
+  overflow-y: auto;
+  margin: 4px 0;
+}
+.sugestao-item {
+  padding: 2px 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sugestao-item.selecionado {
+  background: #e6f0fa;
+}

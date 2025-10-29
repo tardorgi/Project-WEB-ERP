@@ -1,0 +1,8 @@
+[
+  {
+    "label": "Orçamento de Venda",
+    "route": "orcamento-venda",
+    "id": "Faturamento-orcamento-venda",
+    "categoria": "Faturamento"
+  }
+]

@@ -1,0 +1,260 @@
+/* --- Estrutura da Tabela --- */
+.tabela-container {
+  overflow-x: auto;
+}
+
+.tabela-empresa {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.tabela-empresa th,
+.tabela-empresa td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.tabela-empresa tbody tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.tabela-empresa .selecionado {
+  background-color: #cde8ff !important;
+}
+
+/* --- Cabeçalho superior --- */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 5rem;
+}
+
+.empresa-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: default;
+}
+
+.acoes-topo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* --- Botões principais --- */
+.btn-criar {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-criar:hover {
+  background-color: #3e8e41;
+}
+
+.btn-icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* Botões de ação */
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-excluir {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-excluir:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-excluir:hover:enabled {
+  background-color: #c0392b;
+}
+
+.caixa-icone {
+  padding: 6px;
+  background: #e8e8e8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.caixa-icone:hover {
+  background: #d4d4d4;
+}
+
+/* --- Janela flutuante moderna --- */
+.floating-editor.moderno {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  padding: 56px 24px 24px; /* espaço para a barra de arrasto */
+  width: 520px;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Barra de arrasto --- */
+.editor-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background-color: #f9f9f9;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #333;
+  cursor: grab;
+}
+
+.drag-icon {
+  font-size: 18px;
+  color: #999;
+}
+
+.editor-title {
+  font-weight: bold;
+}
+
+/* --- Formulário --- */
+.form-blocos {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-linha.full,
+.form-linha.dupla {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-linha.dupla {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.form-linha.dupla > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 120, 255, 0.3);
+  border-color: #80bdff;
+}
+
+/* --- Botões de ação no formulário --- */
+.modal-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.modal-botoes .botao-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-botoes .botao-icon:hover {
+  transform: scale(1.15);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+  .tabela-container {
+    overflow-x: auto;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+
+  .tabela-empresa {
+    width: 100%;
+    min-width: 600px;
+  }
+
+  .floating-editor.moderno {
+    width: 90%;
+    left: 5%;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .empresa-header {
+    font-size: 1.2rem;
+  }
+
+  .btn-criar {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .tabela-empresa th,
+  .tabela-empresa td {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+  }
+
+  .modal-botoes .botao-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

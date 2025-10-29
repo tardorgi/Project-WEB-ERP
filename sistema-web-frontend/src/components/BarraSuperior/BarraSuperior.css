@@ -1,0 +1,191 @@
+/* BarraSuperior.css */
+.barra-superior {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding-left: 32px;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
+.icone-mais {
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  padding: 2px;
+  transition: transform 0.2s ease;
+}
+.logo-barra-superior {
+  height: 48px;
+  margin-right: 32px;
+}
+
+/* Botão de mais opções sempre visível e tamanho fixo */
+.mais-opcoes {
+  width: 25px;
+  height: 25px;
+  margin-right: 16px;
+  margin-top: 8px;
+  display: block;
+}
+
+/* Ajustes para o campo de pesquisa e sugestões */
+.search-container {
+  position: relative;
+  width: 200px;
+  max-width: 100%;
+  margin-left: auto;
+  transition: width 0.2s;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding-right: 32px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 36px;
+  font-size: 15px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Sugestões compactas no desktop */
+.sugestoes-menu li {
+  padding: 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+.sugestoes-menu li.ativo {
+  background-color: #eee;
+  font-weight: bold;
+}
+.sugestoes-menu li:hover {
+  background-color: #e0e0e0;
+}
+.categoria-titulo {
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 6px 12px 2px 12px;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+}
+.divisoria {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 4px 0 0 0;
+}
+
+/* MOBILE: pesquisa ocupa toda a largura, sugestões logo abaixo */
+@media (max-width: 768px) {
+  .barra-superior {
+    height: 60px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .logo-barra-superior {
+    height: 40px;
+    margin-right: 16px;
+  }
+  .search-container {
+    flex: 1 1 0;
+    min-width: 0;
+    margin-left: 8px;
+    margin-right: 0;
+    padding: 0;
+    position: relative;
+    max-width: unset;
+    justify-content: flex-end;
+    display: flex;
+  }
+  .search-container input[type="text"] {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 10px 40px 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin: 0;
+    display: block;
+    box-sizing: border-box;
+    height: 40px;
+  }
+  .search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+  .sugestoes-menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    left: auto;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-height: 260px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .sugestoes-menu li {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+  .categoria-titulo {
+    padding-top: 14px;
+    padding-bottom: 6px;
+  }
+}
+
+/* Até 480px: colapse o search em ícone apenas */
+@media (max-width: 480px) {
+  .search-container input[type="text"] {
+    display: none;
+  }
+  .search-container.show-input input[type="text"] {
+    display: block;
+  }
+  .search-container .search-icon {
+    margin-left: 0;
+  }
+}
+
+.server-url {
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+  background: rgba(255,255,255,0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: text;
+  user-select: all; /* facilita copiar o endereço */
+}
